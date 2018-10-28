@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>Top spin puzzle</title>
+	<meta name="description" content="самокаты KUGOO">
+	 <meta name="keywords" content="Продажа оригинальных самокатов KUGOO">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
+
+</head>
+<body>
+<div id="game_wrapper">
+	
+   <img src="images/spin.png" alt id="pointer">
+
+  <!--  <div id="main"></div> -->
+
+<!--   <div id="pointer-container"> -->
+<div id="numbers_field">
+  	<div id="top_line"></div>	
+	<div id="left_side"></div>
+	<div id="right_side"></div>
+	<div id="bottom_line"></div>
+  </div> 
+</div>
+<!-- </div> -->
+
+<!-- <div class="round">
+	<div class="top_round">
+	</div>
+	<div class="center_round">
+	</div>
+	<div class="bottom_round">
+	</div>
+</div> -->
+
+<!-- <div class="top_round">
+	<a href='javascript:turn();'>
+	  <img src='images/topspin/tstu1.gif' width=140 height=40 name='top' border=0>
+    </a>
+</div> -->
+
+
+<!-- <div class="touches"> -->
+<!-- <div id="container" ontouchstart="multitouch(event);">Touch me</div> -->
+
+<!-- <div id="floating"> -->
+
+<!-- ontouchmove="move_object(event); Для дрэга всего элемента-->
+
+
+
+<!-- <div id="pointer-container">
+   
+</div> -->
+<!-- </div> -->
+<!-- <div ontouchstart="turn_start(event);" ontouchmove="turn_page(event);">Turn me</div> 
+<div id="sat" ontouchstart="multitouch(event);">Touch me111</div>
+<div id="dro" ontouchstart="multitouch(event);">Touch me</div> -->
+<!-- </div> -->
+
+
+<!-- <div class="numbers">
+	<div class="number_element">1</div>
+	<div class="number_element">2</div>
+	<div class="number_element">3</div>
+	<div class="number_element">4</div>
+	<div class="number_element">5</div>
+	<div class="number_element">6</div>
+</div> -->
+
+
+<!-- <a href='javascript:click(0);'>
+	<img src='images/topspin/ts01.gif' name='pc0' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(1);'>
+	<img src='images/topspin/ts02.gif' name='pc1' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(2);'>
+	<img src='images/topspin/ts03.gif' name='pc2' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(3);'>
+	<img src='images/topspin/ts04.gif' name='pc3' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(4);'>
+	<img src='images/topspin/ts05.gif' name='pc4' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(5);'>
+	<img src='images/topspin/ts06.gif' name='pc5' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(6);'>
+	<img src='images/topspin/ts07.gif' name='pc6' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(7);'>
+	<img src='images/topspin/ts08.gif' name='pc7' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(8);'>
+	<img src='images/topspin/ts09.gif' name='pc8' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(9);'>
+	<img src='images/topspin/ts10.gif' name='pc9' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(10);'>
+	<img src='images/topspin/ts11.gif' name='pc10' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(11);'>
+	<img src='images/topspin/ts12.gif' name='pc11' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(12);'>
+	<img src='images/topspin/ts13.gif' name='pc12' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(13);'>
+	<img src='images/topspin/ts14.gif' name='pc13' width=20 height=20 border=0>
+</a>
+<a href='javascript:click(14);'><img src='images/topspin/ts15.gif' name='pc14' width=20 height=20 border=0></a>
+<a href='javascript:click(15);'><img src='images/topspin/ts16.gif' name='pc15' width=20 height=20 border=0></a>
+<a href='javascript:click(16);'><img src='images/topspin/ts17.gif' name='pc16' width=20 height=20 border=0></a>
+<a href='javascript:click(17);'><img src='images/topspin/ts18.gif' name='pc17' width=20 height=20 border=0></a>
+<a href='javascript:click(18);'><img src='images/topspin/ts19.gif' name='pc18' width=20 height=20 border=0></a>
+<a href='javascript:click(19);'><img src='images/topspin/ts20.gif' name='pc19' width=20 height=20 border=0></a>  -->	
+
+
+
+<!-- <div class="round_bottom">
+<a href='javascript:turn();'>
+	<img src='images/topspin/tstd2.gif' width=80 height=30 name='bottom' border=0>
+</a>
+</div> -->
+
+
+<div class="buttons_block">
+
+	<button class="game_buttons" onclick="javascript:mix();">Start</button>
+	<button class="game_buttons" onclick="javascript:reset();">Reset</button>
+	<button class="game_buttons" onclick="javascript:solve();">Solve</button>
+	<button class="game_buttons" onclick="javascript:left();">Stop</button>
+
+	<!-- <a href='javascript:left();'>
+	<img src='images/topspin/tsleft.gif' width=30 height=30 border=0>
+	</a>
+	<a href='javascript:right();'><img src='images/topspin/tsright.gif' width=30 height=30 border=0></a>
+	<a href='javascript:mix();'><img src='images/buttons/mix.gif' height=16 width=48 border=0></a>
+	<a href='javascript:reset();'><img src='images/buttons/reset.gif' height=16 width=48 border=0></a>
+	<a href='javascript:edit();'><img src='images/buttons/edit.gif' height=16 width=48 border=0 name='edit'></a>
+	<a href='javascript:help();'><img src='images/buttons/help.gif' height=16 width=48 border=0></a>
+	<a href='javascript:solve();'><img src='images/buttons/solve.gif' height=16 width=48 border=0 name='solve'></a>
+	<a href='javascript:solplay();'><img src='images/buttons/play.gif' height=16 width=48 border=0 name='play'></a> -->
+</div>
+
+
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/logic2.js"></script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

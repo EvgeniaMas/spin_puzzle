@@ -1,0 +1,315 @@
+@font-face {
+font-family: "Code-Bold";
+src: url("../fonts/Bold/Code-Bold.eot");
+src: url('../fonts/Bold/Code-Bold.eot?#iefix') format('embeddedopentype'),
+url("../fonts/Bold/Code-Bold.woff2") format("woff2"),
+url("../fonts/Bold/Code-Bold.woff") format("woff"),
+url("../fonts/Bold/Code-Bold.ttf") format("truetype"),
+url("../fonts/Bold/Code-Bold.otf") format("opentype"),
+url('../fonts/Bold/Code-Bold.svg#svgCode-Bold') format('svg');
+font-style: normal;
+font-weight: normal;
+}
+@font-face {
+font-family: "Luuri";
+src: url("../fonts/Luuri/Luuri.eot");
+src: url('../fonts/Bold/Luuri.eot.eot?#iefix') format('embeddedopentype'),
+url("../fonts/Luuri/Luuri.woff2") format("woff2"),
+url("../fonts/Luuri/Luuri.woff") format("woff"),
+url("../fonts/Luuri/Luuri.ttf") format("truetype"),
+url("../fonts/Luuri/Luuri.otf") format("opentype"),
+url('../fonts/Luuri/Luuri.svg#svgLuuri') format('svg');
+font-style: normal;
+font-weight: normal;
+}
+
+@font-face {
+font-family: "Roboto Regular";
+src: url("../fonts/RobotoRegular/Roboto-Regular.eot");
+src: url('../fonts/RobotoRegular/Roboto-Regular.eot?#iefix') format('embeddedopentype'),
+url("../fonts/RobotoRegular/Roboto-Regular.woff2") format("woff2"),
+url("../fonts/RobotoRegular/Roboto-Regular.woff") format("woff"),
+url("../fonts/RobotoRegular/Roboto-Regular.ttf") format("truetype"),
+url("../fonts/RobotoRegular/Roboto-Regular.otf") format("opentype"),
+url('../fonts/RobotoRegular/Roboto-Regular.svg#svgRoboto-Regular') format('svg');
+font-style: normal;
+font-weight: normal;
+}
+
+
+body {
+background-color: #000;
+font-family: "Code-Bold";
+height: 100vh;
+background-image: url(../images/main_bg.jpg);
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+
+}
+html{
+padding-top: 120px;
+height: 100vh;
+font-size: 16px;
+overflow-y: hidden;
+}
+#game_wrapper {
+width: 80%;
+max-height: 80vh;
+margin:auto; 
+background-image: url(../images/game_board.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+/*background-color: red;*/
+
+}
+div.circle {
+position: relative;
+/*width: 33%;*/
+/*width: 114px;*/
+max-height: 93px; 
+min-height: 73px;  
+box-sizing: border-box;
+display: inline-block;
+background-image: url(../images/coin.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+line-height: 93px;
+color: #fff;
+text-align: center;
+margin:auto;
+font-size: 50px;
+font-family: "Luuri";
+display: inline-block;
+}
+div.circle.bottom_line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#top_line {
+  width: 80%;
+  margin:auto;
+  position: relative;
+  z-index: 23;
+}
+.game_buttons {
+  font-family: "Roboto Regular";
+  margin: 25px auto;
+  position: relative;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 10px;
+  width: 200px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  text-transform: none;
+  background-color: #3f8792;
+  outline: none;
+  border: 2px solid #91ebf8;
+  border-radius: 1rem;
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+.game_buttons:hover{
+  background-color: #2c5e66;
+}
+.buttons_block {
+position: absolute;
+padding: 1.5rem;
+z-index: 8;
+top: 0;
+left: 0;
+}
+
+
+.round {
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+  border-radius: 50%;
+  border: 3px solid red;
+  position: relative;
+  z-index: 34444444;
+}
+
+.top_round, 
+.bottom_round{
+height: 33%;
+position: relative;
+}
+
+.center_round {
+  height: 33%;
+  background-color: black;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin:auto;
+
+  /*border-bottom-left-radius: 50%;*/
+  /*border-bottom-right-radius: 50%;*/
+}
+
+
+
+/*button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}*/
+
+
+
+#bottom_line {
+  display: block;
+  position: absolute;
+ /* background-color: green;*/
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 120px;
+  width: 80%;
+  z-index: 34;
+  margin:auto;
+}
+
+#left_side,
+#right_side{
+height: 60%;
+width: 120px;
+position: absolute;
+top: 0;
+bottom: 0;
+
+margin: auto;
+z-index: 45;
+
+}
+#right_side{
+right: 0;
+}
+
+#left_side{
+  left: 0;
+}
+
+
+#pointer-container{
+position: relative;
+/*height: 100vh;*/
+/*width: 90vw;*/
+margin:auto;
+margin-top: 120px;
+
+padding-top: 60px;
+}
+#pointer {
+/*max-height: 404px;*/
+max-height: 350px;
+margin:auto;
+display: inline-block;
+position: absolute;
+top:0;
+right: 0;
+left: 0;
+z-index: 5;
+}
+div#main {
+height: 400px;
+width: 400px;
+position:relative;
+margin: auto;
+margin-top: -220px;
+z-index: 3;
+}
+
+
+#numbers_field {
+width: 673px;
+height: 491px;
+/*background-color: red;*/
+position: relative;
+margin: auto;
+z-index: 5677;
+}
+
+.flip {    
+  transform: rotateY(180deg); /*при добавлении этого класса элемент развернется на 180 градусов*/
+}
+
+
+
+/*  .number_element {
+display: inline-block;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: blue;
+line-height: 40px;
+color: #fff;
+text-align: center;
+margin:auto;
+}*/
+
+/*  h1#sat {
+color:#fff;
+}
+
+.touches{
+min-height: 300px;
+background-color: red;
+font-size: 30px;
+position: relative;
+
+}
+
+#floating {
+position: absolute;
+top: 0;
+left: 0;
+}*/
+
+/*  .sides {
+background-color: green;
+min-width: 300px;
+}
+
+.left_side {
+width: 45%;
+display: inline-block;
+}
+
+.right_side {
+width: 45%;
+display: inline-block;
+background-color: orange;
+}
+
+.left_side >div.number_element,
+.right_side >div.number_element {
+display: block; 
+}*/
+
+
+/*#wrap {position: relative;
+height: 400px;
+width: 600px;
+background-color: orange;}
+#wrap div {
+background:#333; 
+position: absolute;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: blue;
+line-height: 40px;
+color: #fff;
+text-align: center; 
+}*/
+
