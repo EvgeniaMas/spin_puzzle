@@ -42,10 +42,10 @@ background-image: url(../images/main_bg.jpg);
 background-position: center;
 background-repeat: no-repeat;
 background-size: contain;
-/*display: flex;*/
+display: flex;
 /*
 text-align: center;
-    vertical-align: middle;*/
+vertical-align: middle;*/
 
 }
 html{
@@ -65,33 +65,33 @@ background-repeat: no-repeat;
 background-size: contain;
 }
 #top_line {
-  width: 80%;
-  margin:auto;
-  position: relative;
-  z-index: 23;
-  padding-top: 5%; 
+width: 80%;
+margin:auto;
+position: relative;
+z-index: 23;
+padding-top: 5%; 
 }
 .game_buttons {
-  font-family: "Roboto Regular";
-  margin: 25px auto;
-  position: relative;
-  font-size: 1.3rem;
-  color: #fff;
-  padding: 10px;
-  width: 200px;
-  overflow: hidden;
-  text-align: center;
-  cursor: pointer;
-  text-transform: none;
-  background-color: #3f8792;
-  outline: none;
-  border: 2px solid #91ebf8;
-  border-radius: 1rem;
-  display: block;
-  transition: all 0.5s ease-in-out;
+font-family: "Roboto Regular";
+margin: 25px auto;
+position: relative;
+font-size: 1.3rem;
+color: #fff;
+padding: 10px;
+width: 200px;
+overflow: hidden;
+text-align: center;
+cursor: pointer;
+text-transform: none;
+background-color: #3f8792;
+outline: none;
+border: 2px solid #91ebf8;
+border-radius: 1rem;
+display: block;
+transition: all 0.5s ease-in-out;
 }
 .game_buttons:hover{
-  background-color: #2c5e66;
+background-color: #2c5e66;
 }
 .buttons_block {
 position: absolute;
@@ -101,21 +101,21 @@ top: 0;
 left: 0;
 }
 #bottom_line {
-  display: block;
-  position: absolute;
- /* background-color: green;*/
-  bottom: 0;
-  left: 0;
-  right: 0;
-  min-height: 120px;
-  width: 80%;
-  z-index: 34;
-  margin:auto;
+display: block;
+position: absolute;
+/* background-color: green;*/
+bottom: 0;
+left: 0;
+right: 0;
+min-height: 120px;
+width: 80%;
+z-index: 34;
+margin:auto;
 }
 #left_side,
 #right_side{
 height: 60%;
-width: 120px;
+/*width: 120px;*/
 position: absolute;
 top: 0;
 bottom: 0;
@@ -126,14 +126,14 @@ z-index: 45;
 right: 0;
 }
 #left_side{
-  left: 0;
+left: 0;
 }
 #pointer {
 max-height: 350px;
 margin:auto;
 display: inline-block;
 position: absolute;
-top:0;
+top:-18%;
 right: 0;
 left: 0;
 z-index: 3;
@@ -147,60 +147,67 @@ z-index: 3;
 }
 .number_text,
 .symbol_text{
-  font-size: 3rem;
-  color: #fff;
-  text-align: center;
-  display: block;
-  max-height: 3rem;
-  line-height: 0;
+/*font-size: 3rem;*/
+color: #fff;
+text-align: center;
+display: block;
+/*max-height: 2rem;*/
+line-height: 0;
 }
 .symbol_text{
-  font-family: "Luuri";
+font-family: "Luuri";
 }
 .number_text{
 font-family: "Code-Bold"; 
 }
 .item {
-color: #fff;
 text-align: center;
 margin:auto;
 max-height: 93px; 
 min-height: 73px;
+line-height: 93px;
+font-size: 2.5rem;
 display: inline-block;
 position: relative;
-transition: all 1s ease;
+transition: all 2s ease;
 transform-style: preserve-3d;
-}
-.side {  
 background-image: url(../images/coin.png);
 background-position: center;
 background-repeat: no-repeat;
 background-size: contain;
+}
+#left_side .item,
+#right_side .item {
+  display: block;
+  margin-bottom: 5%;
+}
+.side { 
 position: relative;
 transition: all .3s ease;
 display: block;
 margin:auto;
-backface-visibility: hidden; /*прячет сторону карты, которая отвернута от пользователя*/
- }
+backface-visibility: hidden; 
+}
 .back { 
-  position: absolute; 
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+position: absolute; 
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+/*background-color: red;*/
 }
 .front
- { 
-  position: absolute; 
-  top: 0;
-    top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transform: rotateY(180deg); 
+{ 
+position: absolute; 
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+/*background-color: green;*/
+transform: rotateY(180deg); 
 }
 .flip {    
-  transform: rotateY(180deg); 
+transform: rotateY(180deg); 
 
 
 
@@ -280,9 +287,9 @@ line-height: 40px;
 color: #fff;
 text-align: center; 
 }*/
+}
 
-
-div.circle {
+.circle {
 position: relative;
 /*width: 33%;*/
 /*width: 114px;*/
@@ -290,10 +297,10 @@ max-height: 93px;
 min-height: 73px;  
 box-sizing: border-box;
 display: inline-block;
-/*background-image: url(../images/coin.png);
+background-image: url(../images/coin.png);
 background-position: center;
 background-repeat: no-repeat;
-background-size: contain;*/
+background-size: contain;
 line-height: 93px;
 color: #fff;
 text-align: center;
@@ -303,40 +310,41 @@ font-family: "Luuri";
 display: inline-block;
 }
 div.circle.bottom_line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+position: absolute;
+bottom: 0;
+left: 0;
 }
 
 .round {
-  width: 300px;
-  height: 300px;
-  background-color: blue;
-  border-radius: 50%;
-  border: 3px solid red;
-  position: relative;
-  z-index: 34444444;
+width: 300px;
+height: 300px;
+background-color: #000;
+border-radius: 50%;
+position: relative;
+z-index: 34444444;
+background-image: url(../images/spin.png);
+background-repeat: repeat;
+background-position: center;
+background-size: contain;
 }
 
 .top_round, 
 .bottom_round{
 height: 33%;
-position: relative;
+
 }
 .center_round {
-  height: 33%;
-  background-color: black;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  margin:auto;
-  /*border-bottom-left-radius: 50%;*/
-  /*border-bottom-right-radius: 50%;*/
+height: 33%;
+box-sizing: border-box;
+overflow-x: hidden;
+margin:auto;
+/*border-bottom-left-radius: 50%;*/
+/*border-bottom-right-radius: 50%;*/
 }
 /*button:disabled,
 button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
+border: 1px solid #999999;
+background-color: #cccccc;
+color: #666666;
 }*/
 
