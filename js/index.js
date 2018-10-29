@@ -1,3 +1,11 @@
+$('#start_game').click( function() {
+  if($(document).find('.item').hasClass('flip')) { 
+    $(document).find('.item').removeClass('flip');
+
+  } else {
+    $(document).find('.item').addClass('flip');
+  }
+})
 var sets = 12;
 // Shaffle funtion
 function shuffle(array) {	
@@ -27,7 +35,10 @@ var setup = function () {
     var pieces_in_row = sets/4;
     var horizontal_row= mainWidth/pieces_in_row;    
     var vertical_row = mainHeight/pieces_in_row;
-
+    var symbols = document.getElementsByClassName('symbol_text');
+    var numbers = document.getElementsByClassName('number_text');
+    
+   
     // console.log(vertical_row);
 
     // console.log(vertical_row);
@@ -38,61 +49,91 @@ var setup = function () {
 
     var colors = ['#91ebf8','#90c881', '#f88701'];
     for (var i = 0; i < pieces_in_row; i++) {
-        var circle = document.createElement('div');
+        var top = document.createElement('div');
 
-        circle.className = 'circle number';
-        circletopArray.push(circle);              
-        circle.style.width = horizontal_row +'px'; 
+        top.className = 'item';
+        top.innerHtml= '<div class="side back"><p class="symbol_text">1</p></div><div class="side front"><p class="number_text">1</p></div>';
+        circletopArray.push(top);              
+        top.style.width = horizontal_row +'px'; 
         circletopArray[i].style.color = colors[0]; 
-
-        top_line.appendChild(circletopArray[i]);
-        // $(top_line[0]).text("a");
+        top.innerHTML = '<div class="side back"><p class="symbol_text">2</p></div><div class="side front"><p class="number_text">33</p></div>';
+        top_line.appendChild(circletopArray[i]);      
         var bottom = document.createElement('div');
-        bottom.className = 'circle number';
-        circlebottomArray.push(bottom);        
+        bottom.className = 'item';
+        bottom.innerHTML = '<div class="side back"><p class="symbol_text">3</p></div><div class="side front"><p class="number_text">33</p></div>';
+        circlebottomArray.push(bottom); 
         bottom.style.width = horizontal_row +'px';
-        circlebottomArray[i].style.color = colors[1];              
-        bottom_line.appendChild(circlebottomArray[i]);        
+        symbols[i].style.color = colors[1];
+        numbers[i].style.color = colors[0];              
+        bottom_line.appendChild(circlebottomArray[i]); 
+
     }
 
-    for (var i = 0; i < pieces_in_row; i++) {
+
+        for (var i = 0; i < pieces_in_row; i++) {
         var lefts = document.createElement('div');
-        lefts.className = 'circle number';
 
+        lefts.className = 'item';
+        lefts.innerHTML = '<div class="side back"><p class="symbol_text">#</p></div><div class="side front"><p class="number_text">33</p></div>';
         circleleftArray.push(lefts);              
-        lefts.style.width = vertical_row +'px'; 
-        circleleftArray[i].style.color = colors[2];       
-        left_line.appendChild(circleleftArray[i]);
+        lefts.style.width = horizontal_row +'px'; 
+        circleleftArray[i].style.color = colors[1]; 
+        
+        left_line.appendChild(circleleftArray[i]);    
+        console.log(lefts);  
         var rights = document.createElement('div');
-        rights.className = 'circle number';
-        circlerightArray.push(rights);        
-        rights.style.width = vertical_row +'px';
-        circlerightArray[i].style.color = colors[0];              
-        right_line.appendChild(circlerightArray[i]);        
+        rights.className = 'item';
+        rights.innerHTML = '<div class="side back"><p class="symbol_text">#</p></div><div class="side front"><p class="number_text">33</p></div>';
+        circlerightArray.push(rights);              
+        rights.style.width = horizontal_row +'px'; 
+        circlerightArray[i].style.color = colors[1];         
+        right_line.appendChild(circlerightArray[i]);   
     }
 
-    $(circletopArray[0]).text("#");
-    $(circlebottomArray[0]).text("#"); 
-    $(circleleftArray[0]).text("#");
-    $(circlerightArray[0]).text("#");
 
-     $(circletopArray[1]).text("1");
-    $(circlebottomArray[1]).text("1"); 
-    $(circleleftArray[1]).text("1");
-    $(circlerightArray[1]).text("1");
 
-    $(circletopArray[2]).text("2"); 
-    $(circlebottomArray[2]).text("2"); //диванчик
-    $(circleleftArray[2]).text("2");
-    $(circlerightArray[2]).text("3");
+    // $(circletopArray[0]).text("#");
+    // $(circlebottomArray[0]).text("#"); 
+    // $(circleleftArray[0]).text("#");
+    // $(circlerightArray[0]).text("#");
+
+    //  $(circletopArray[1]).text("1");
+    // $(circlebottomArray[1]).text("1"); 
+    // $(circleleftArray[1]).text("1");
+    // $(circlerightArray[1]).text("1");
+
+    // $(circletopArray[2]).text("2"); 
+    // $(circlebottomArray[2]).text("2"); //диванчик
+    // $(circleleftArray[2]).text("2");
+    // $(circlerightArray[2]).text("3");
  
  
-// бета/0x33 
-// перечеркнутый диванчик /0x32 
+// // бета/0x33 
+// // перечеркнутый диванчик /0x32 
 
 }
 
 setup();
+
+
+// $('#start_game').click( function() {
+//   if($(document).find('.card').hasClass('flip')) { 
+//     $(document).find('.card').removeClass('flip')
+
+//   } else {
+//     $(document).find('.card').addClass('flip')
+//   }
+// })
+
+
+
+
+
+
+
+
+
+
 
 // var generate = function(n, rx, ry, id) {
 //     var frags = 360 / n;
@@ -186,7 +227,39 @@ $(elements_blocks[i]).text(current_game_elements[i]);
 
 
 
+    // $(function(){
+    //   $(".card").flip({
+    //     trigger: "click"
+    //   });
+    // });
+
+
+
+// $("#start_game").on('click',function(){
+//   $("#card").flip({axis: 'y'});
+// });
+// $("#card").flip({
+//   axis: 'y',
+//   trigger: 'click'
+// });
+
+// $(function() {
+//     // $("#card-1 .back").hide();
+//     $("#start_game").click(function() {
+//         $(".front").flip();
+//         // $(".back").hide();
+//     });
+    // $("#flipback-card1").click(function() {
+    //     $("#card-1 .front").show();
+    //     $("#card-1 .back").hide();
+    // });
+// });
+
+
+
+
 function mix(){
+
 shuffle(elements);
 current_game_elements = elements;
 // for (i=0; i<elements.length; i++){   
@@ -199,7 +272,7 @@ function display(){
 
 for (var i = 0; i < elements.length; i++){
   
-$('div.circle').css({fontFamily: "Code-Bold"});    
+    
 $(elements_blocks[i]).text(elements[i]); 
 // var a = $(elements_blocks[i]).text(elements[i]); 
 }
@@ -207,18 +280,13 @@ $(elements_blocks[i]).text(elements[i]);
 
 // rotation elements
 
-document.getElementById("pointer").addEventListener("touchmove", function(event) {
-  // alert("here");
+document.addEventListener("DOMContentLoaded", function() {
 var pointer = document.getElementById("pointer"),
         rotate_line = document.getElementById("top_line");
-
         var pointerBox = pointer.getBoundingClientRect(),
         centerPoint = window.getComputedStyle(pointer).transformOrigin,
         centers = centerPoint.split(" ");
-        var rotate_lines_element =$('#top_line').find('div.circle');
-
-       
-
+        var rotate_lines_element =$('#top_line').find('.number_text');
     function rotatePointer(e) {
     var pointerEvent = e;
        if (e.targetTouches && e.targetTouches[0]) {
@@ -227,12 +295,10 @@ var pointer = document.getElementById("pointer"),
           // console.log(pointerEvent);
           mouseX = pointerEvent.pageX;
           mouseY = pointerEvent.pageY;
-
     } else {
           mouseX = e.clientX,
           mouseY = e.clientY;
     }
-
         var centerY = pointerBox.top + parseInt(centers[1]) - window.pageYOffset,
         centerX = pointerBox.left + parseInt(centers[0]) - window.pageXOffset,
              radians = Math.atan2(mouseX - centerX, mouseY - centerY),
@@ -242,29 +308,53 @@ var pointer = document.getElementById("pointer"),
 
             rotate_lines_element.map(function() {
              this.style.transform = 'rotate('+degrees+'deg)';
-         });
-
-
-            
+         });            
 }
-
-// $(pointer).on('touchmove', function(e){
-   
-//     rotatePointer();
-// });
-// $(pointer).on('touchstart', function(e){
-    
-//     rotatePointer();
-// });
-
 // window.addEventListener('mousemove', rotatePointer);
 pointer.addEventListener('touchmove', rotatePointer);
 pointer.addEventListener('touchstart', rotatePointer);
 top_line.addEventListener('touchstart', rotatePointer);
 top_line.addEventListener('touchmove', rotatePointer);
-
-
 });
+
+
+
+// Попытка крутить диск с цифрами
+// document.addEventListener("DOMContentLoaded", function(e) {
+// var pointers = document.getElementsByClassName(".circle");
+// alert(pointers);
+       
+//         var pointerBox = e.target.getBoundingClientRect(),
+//         centerPoint = window.getComputedStyle(pointers).transformOrigin,
+//         centers = centerPoint.split(" ");
+//         var rotate_lines_element =$('#top_line').find('div.circle');
+//     function rotatePointer(e) {
+//     var pointerEvent = e;
+//        if (e.targetTouches && e.targetTouches[0]) {
+//           e.preventDefault(); 
+//           pointerEvent = e.targetTouches[0];
+//           // console.log(pointerEvent);
+//           mouseX = pointerEvent.pageX;
+//           mouseY = pointerEvent.pageY;
+//     } else {
+//           mouseX = e.clientX,
+//           mouseY = e.clientY;
+//     }
+//         var centerY = pointerBox.top + parseInt(centers[1]) - window.pageYOffset,
+//         centerX = pointerBox.left + parseInt(centers[0]) - window.pageXOffset,
+//              radians = Math.atan2(mouseX - centerX, mouseY - centerY),
+//             degrees = (radians * (180 / Math.PI) * -1) + 180; 
+//             pointers.style.transform = 'rotate('+degrees+'deg)';
+            
+
+           
+// }
+// // window.addEventListener('mousemove', rotatePointer);
+// pointers.addEventListener('touchmove', rotatePointer);
+// pointers.addEventListener('touchstart', rotatePointer);
+// });
+
+
 
 // document.addEventListener("DOMContentLoaded", function() {
 //         var pointer = document.getElementById("pointer"),
@@ -474,7 +564,7 @@ top_line.addEventListener('touchmove', rotatePointer);
 
 var posit = new Array ();
 var trn;
-var elements_blocks= $('.circle');
+var elements_blocks= $('.number_text');
 // console.log(elements_blocks);
 // console.log(elements);    
 

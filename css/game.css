@@ -22,7 +22,6 @@ url('../fonts/Luuri/Luuri.svg#svgLuuri') format('svg');
 font-style: normal;
 font-weight: normal;
 }
-
 @font-face {
 font-family: "Roboto Regular";
 src: url("../fonts/RobotoRegular/Roboto-Regular.eot");
@@ -35,8 +34,6 @@ url('../fonts/RobotoRegular/Roboto-Regular.svg#svgRoboto-Regular') format('svg')
 font-style: normal;
 font-weight: normal;
 }
-
-
 body {
 background-color: #000;
 font-family: "Code-Bold";
@@ -45,6 +42,10 @@ background-image: url(../images/main_bg.jpg);
 background-position: center;
 background-repeat: no-repeat;
 background-size: contain;
+/*display: flex;*/
+/*
+text-align: center;
+    vertical-align: middle;*/
 
 }
 html{
@@ -55,46 +56,20 @@ overflow-y: hidden;
 }
 #game_wrapper {
 width: 80%;
+margin:auto;
 max-height: 80vh;
-margin:auto; 
+/*position: relative; */
 background-image: url(../images/game_board.png);
 background-position: center;
 background-repeat: no-repeat;
 background-size: contain;
-/*background-color: red;*/
-
 }
-div.circle {
-position: relative;
-/*width: 33%;*/
-/*width: 114px;*/
-max-height: 93px; 
-min-height: 73px;  
-box-sizing: border-box;
-display: inline-block;
-background-image: url(../images/coin.png);
-background-position: center;
-background-repeat: no-repeat;
-background-size: contain;
-line-height: 93px;
-color: #fff;
-text-align: center;
-margin:auto;
-font-size: 50px;
-font-family: "Luuri";
-display: inline-block;
-}
-div.circle.bottom_line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
 #top_line {
   width: 80%;
   margin:auto;
   position: relative;
   z-index: 23;
+  padding-top: 5%; 
 }
 .game_buttons {
   font-family: "Roboto Regular";
@@ -125,47 +100,6 @@ z-index: 8;
 top: 0;
 left: 0;
 }
-
-
-.round {
-  width: 300px;
-  height: 300px;
-  background-color: blue;
-  border-radius: 50%;
-  border: 3px solid red;
-  position: relative;
-  z-index: 34444444;
-}
-
-.top_round, 
-.bottom_round{
-height: 33%;
-position: relative;
-}
-
-.center_round {
-  height: 33%;
-  background-color: black;
-  overflow-x: hidden;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  margin:auto;
-
-  /*border-bottom-left-radius: 50%;*/
-  /*border-bottom-right-radius: 50%;*/
-}
-
-
-
-/*button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}*/
-
-
-
 #bottom_line {
   display: block;
   position: absolute;
@@ -178,7 +112,6 @@ button[disabled]{
   z-index: 34;
   margin:auto;
 }
-
 #left_side,
 #right_side{
 height: 60%;
@@ -186,31 +119,16 @@ width: 120px;
 position: absolute;
 top: 0;
 bottom: 0;
-
 margin: auto;
 z-index: 45;
-
 }
 #right_side{
 right: 0;
 }
-
 #left_side{
   left: 0;
 }
-
-
-#pointer-container{
-position: relative;
-/*height: 100vh;*/
-/*width: 90vw;*/
-margin:auto;
-margin-top: 120px;
-
-padding-top: 60px;
-}
 #pointer {
-/*max-height: 404px;*/
 max-height: 350px;
 margin:auto;
 display: inline-block;
@@ -218,30 +136,80 @@ position: absolute;
 top:0;
 right: 0;
 left: 0;
-z-index: 5;
-}
-div#main {
-height: 400px;
-width: 400px;
-position:relative;
-margin: auto;
-margin-top: -220px;
 z-index: 3;
 }
-
-
 #numbers_field {
 width: 673px;
 height: 491px;
-/*background-color: red;*/
 position: relative;
 margin: auto;
-z-index: 5677;
+z-index: 3;
 }
-
+.number_text,
+.symbol_text{
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+  display: block;
+  max-height: 3rem;
+  line-height: 0;
+}
+.symbol_text{
+  font-family: "Luuri";
+}
+.number_text{
+font-family: "Code-Bold"; 
+}
+.item {
+color: #fff;
+text-align: center;
+margin:auto;
+max-height: 93px; 
+min-height: 73px;
+display: inline-block;
+position: relative;
+transition: all 1s ease;
+transform-style: preserve-3d;
+}
+.side {  
+background-image: url(../images/coin.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;
+position: relative;
+transition: all .3s ease;
+display: block;
+margin:auto;
+backface-visibility: hidden; /*прячет сторону карты, которая отвернута от пользователя*/
+ }
+.back { 
+  position: absolute; 
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.front
+ { 
+  position: absolute; 
+  top: 0;
+    top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: rotateY(180deg); 
+}
 .flip {    
-  transform: rotateY(180deg); /*при добавлении этого класса элемент развернется на 180 градусов*/
-}
+  transform: rotateY(180deg); 
+
+
+
+
+
+
+
+
+
 
 
 
@@ -311,5 +279,64 @@ background-color: blue;
 line-height: 40px;
 color: #fff;
 text-align: center; 
+}*/
+
+
+div.circle {
+position: relative;
+/*width: 33%;*/
+/*width: 114px;*/
+max-height: 93px; 
+min-height: 73px;  
+box-sizing: border-box;
+display: inline-block;
+/*background-image: url(../images/coin.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: contain;*/
+line-height: 93px;
+color: #fff;
+text-align: center;
+margin:auto;
+font-size: 50px;
+font-family: "Luuri";
+display: inline-block;
+}
+div.circle.bottom_line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.round {
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+  border-radius: 50%;
+  border: 3px solid red;
+  position: relative;
+  z-index: 34444444;
+}
+
+.top_round, 
+.bottom_round{
+height: 33%;
+position: relative;
+}
+.center_round {
+  height: 33%;
+  background-color: black;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin:auto;
+  /*border-bottom-left-radius: 50%;*/
+  /*border-bottom-right-radius: 50%;*/
+}
+/*button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }*/
 
