@@ -66,7 +66,7 @@ margin:auto;
 position: relative;
 z-index: 23;
 min-height: 7.75rem;
-/*background-color: green;*/
+
 }
 .game_buttons {
 font-family: "Roboto Regular";
@@ -297,6 +297,67 @@ background-image: none;
 .buttons_block {
 position: relative;
 padding: 1.5rem;
+}
+}
+
+@media only screen and ( max-width: 1024px) and(orientation:portrait){
+#numbers_field {
+height: 24.6875rem;
+}
+.item {
+text-align: center;
+margin:auto;
+max-height: 4.2rem; 
+height: 4.2rem;
+line-height: 4.2rem;
+font-size: 2.2rem;
+}
+#top_line {
+margin-top: -1.5rem;
+min-height: 3.9rem;
+
+}
+.round {
+width: 73%;
+height: 100%;
+}
+#wheel {
+width: 73%;
+max-width: 18rem;
+margin-top: -10%;
+}
+[id='0']{
+top: 2%;
+left: 21%;	
+}
+[id='1']{
+top: 2%;
+left: 39%;	
+}
+[id='2']{
+top: 2%;
+left: 55%;	
+}
+[id='8']{
+left: 21%;	
+}
+[id='7']{
+left: 39%;	
+}
+[id='6']{
+left: 55%;	
+}
+[id='3'],
+[id='4'],
+[id='5']{
+
+left: 80%;	
+}
+[id='9'],
+[id='10'],
+[id='11']{
+
+left: -2%;	
 }
 }
 @media only screen and ( max-width: 991px){
