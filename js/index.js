@@ -323,20 +323,21 @@ var index= parseInt(item_set[i].getAttribute('id'));
 var count=0;
 
 $(start_button).on('click', function() {
-  if (count>0){
-  initial_state(); 
-  set_symbols();
-  mix(); 
-   game_disabled.style.display ='none';
-   $(document).find('.item').addClass('flip'); 
-  }
-  else { 
+  // if (count>0){
+  // initial_state(); 
+  // set_symbols();
+  // mix(); 
+  //  game_disabled.style.display ='none';
+  //  $(document).find('.item').addClass('flip'); 
+  // }
+  // else { 
 
    mix(); 
    game_disabled.style.display ='none';
    $(document).find('.item').addClass('flip');
+   set_symbols();
    count=1; 
-   }  
+   // }  
    start_button.disabled = true;
    reset_button.disabled = false;
    solved_button.disabled = false;

@@ -14,8 +14,8 @@ font-weight: normal;
 font-family: "Luuri";
 src: url("../fonts/Luuri/Luuri.eot");
 src: url('../fonts/Luuri.eot.eot?#iefix') format('embeddedopentype'),
-url("../fonts/Luuri/Luuri.woff2") format("woff2"),
 url("../fonts/Luuri/Luuri.woff") format("woff"),
+url("../fonts/Luuri/Luuri.woff2") format("woff2"),
 url("../fonts/Luuri/Luuri.ttf") format("truetype"),
 url("../fonts/Luuri/Luuri.otf") format("opentype"),
 url('../fonts/Luuri/Luuri.svg#svgLuuri') format('svg');
@@ -66,7 +66,6 @@ margin:auto;
 position: relative;
 z-index: 23;
 min-height: 7.75rem;
-
 }
 .game_buttons {
 font-family: "Roboto Regular";
@@ -154,15 +153,17 @@ top: 0;
 bottom: 0;
 left: 0;
 right: 0;
--moz-transform:    rotateY(180deg);                        
+                       
 -o-transform:      rotateY(180deg);                        
--webkit-transform: rotateY(180deg);                        
+-webkit-transform: rotateY(180deg);  
+-moz-transform:    rotateY(180deg);                       
 transform:         rotateY(180deg);                        
 }
 .flip {    
--moz-transform:    rotateY(180deg);                        
+                        
 -o-transform:      rotateY(180deg);                        
--webkit-transform: rotateY(180deg);                        
+-webkit-transform: rotateY(180deg); 
+-moz-transform:    rotateY(180deg);                       
 transform:         rotateY(180deg);  
 } 
 .item {
@@ -258,17 +259,17 @@ left: 20%;
 }
 [id='9']{
 position: absolute;
-top: 62%;
+top: 69%;
 left: 3%;	
 }
 [id='10']{
 position: absolute;
-top: 40%;
+top: 43%;
 left: 3%;	
 }
 [id='11']{
 position: absolute;
-top: 17%;
+top: 20%;
 left: 3%;
 }
 #game_disabled_layout {
@@ -286,7 +287,7 @@ z-index: 9;
 @media only screen and ( max-width: 1240px) {
 html{
 overflow-y: visible;
-padding-top: 8rem;
+padding-top: 13rem;
 }
 body{
 display: block;
@@ -298,7 +299,36 @@ padding: 1.5rem;
 }
 }
 @media only screen and ( max-width: 991px){
-/*#numbers_field {
+html{
+padding-top: 9rem;
+}
+#top_line {
+width: 100%;
+margin:auto;
+position: absolute;
+z-index: 23;
+min-height: 5.75rem;
+top: 9%;
+right: 0;
+left: 0;
+}
+
+[id='0']{
+position: absolute;
+top: 1%;
+	
+}
+[id='1']{
+position: absolute;
+top: 1%;
+
+}
+[id='2']{
+position: absolute;
+top: 1%;
+}
+
+#numbers_field {
 width: 60%;
 height: auto;
 min-height: 14.375rem;
@@ -309,13 +339,16 @@ width: 11.875rem;
 }
 #wheel {
 width: 66%;
+top:-20%;
+max-height: 22.25rem;
+max-width: 22.875rem;
 }
 [id='0'],
 [id='1'],
 [id='2']
 {
 top: 11%;
-}*/
+}
 
 #game_wrapper {
 width: 100%;
@@ -343,17 +376,6 @@ height: 5rem;
 line-height: 5rem;
 font-size: 2.8rem;
 }
-/*#top_line {
-min-height: 6rem;
-background-color: yellow;
-}*/
-/*[id='4'],
-[id='5'],
-[id='3']
-{
-left: 80%;
-}*/
-
 }
 @media only screen and ( max-width: 768px) and (orientation:portrait) {
 
@@ -375,44 +397,6 @@ width: 11.875rem;
 width: 70%;
 }
 }
-/*@media only screen and ( min-width: 601px) and (max-width: 990px){
-#game_wrapper {
-width: 100%;
-margin: auto;
-background-image: url(../images/game_board.png);
-background-position: center bottom;
-background-repeat: no-repeat;
-background-size: contain;
-}
-#game_wrapper {
-width: 100%;
-}
-#numbers_field {
-width: 38.0625rem;
-height: 28.6875rem;
-position: relative;
-margin: auto;
-z-index: 3;
-}
-.item {
-text-align: center;
-margin:auto;
-max-height: 5rem; 
-height: 5rem;
-line-height: 5rem;
-font-size: 2.8rem;
-}
-/*#top_line {
-min-height: 6rem;
-background-color: yellow;
-}*/
-/*[id='4'],
-[id='5'],
-[id='3']
-{
-left: 80%;
-}*/
-/*}*/
 @media only screen and ( max-width: 768px) {
 html{
 padding-top: 9rem;
@@ -449,23 +433,23 @@ font-size: 2rem;
 min-height: 4rem;
 }
 }
-@media only screen and ( max-width: 600px) {
+@media only screen and ( max-width: 767px) {
 #numbers_field {
 width: 95%;
-width: 27.0625rem;
-height: 17.6875rem;
+
+height: 24.6875rem;
 }
 .item {
 text-align: center;
 margin:auto;
-max-height: 2.5rem; 
-height: 2.5rem;
-line-height: 2.5rem;
-font-size: 1.3rem;
+max-height: 4.2rem; 
+height: 4.2rem;
+line-height: 4.2rem;
+font-size: 2.2rem;
 }
 #top_line {
-	margin-top: 6rem;
-min-height: 3.2rem;
+margin-top: -1.5rem;
+min-height: 3.9rem;
 
 }
 .round {
@@ -474,18 +458,19 @@ height: 100%;
 }
 #wheel {
 width: 73%;
-max-width: 15rem;
+max-width: 20rem;
+margin-top: -10%;
 }
 [id='0']{
-top: 12%;
+top: 2%;
 left: 21%;	
 }
 [id='1']{
-top: 12%;
+top: 2%;
 left: 39%;	
 }
 [id='2']{
-top: 12%;
+top: 2%;
 left: 55%;	
 }
 [id='8']{
@@ -497,22 +482,57 @@ left: 39%;
 [id='6']{
 left: 55%;	
 }
+[id='3'],
+[id='4'],
+[id='5']{
+
+left: 74%;	
 }
-@media only screen and ( max-width: 500px) {
-body{
-display: block;
+[id='9'],
+[id='10'],
+[id='11']{
+
+left: 6%;	
 }
+}
+@media only screen and ( max-width: 680px) {
 html{
-padding-top: 4rem;
+padding-top: 10.5rem;
+}
+#top_line {
+min-height: 3.8rem;
+margin-top: -1.5rem;
+}
+
+[id='3'],
+[id='4'],
+[id='5']{
+left: 74%;	
+}
+[id='9'],
+[id='10'],
+[id='11']{
+left: 2%;	
+}
+
+.item {
+text-align: center;
+margin:auto;
+max-height: 3.6rem; 
+height: 3.6rem;
+line-height: 3.6rem;
+font-size: 1.8rem;
 }
 #wheel {
-width: 80%;
-max-width: 11.25rem;
+width: 73%;
+top:-17%;
+max-height: 19.25rem;
+max-width: 19.875rem;
 }
 #numbers_field {
 width: 95%;
 height: auto;
-min-height: 14.375rem;
+height: 22.375rem;
 position: relative;
 margin: auto;
 z-index: 3;
@@ -521,20 +541,142 @@ z-index: 3;
 font-size: 1.1rem;    
 width: 11.875rem;
 }
+[id='0'],
+[id='1'],
+[id='2']{
+top: 2%;
 }
-@media only screen and ( max-width: 400px) {
-/*html{
-padding-top: 4rem;
-}*/
+[id='3'],
+[id='4'],
+[id='5']{
+left: 75%;	
+}
+[id='9'],
+[id='10'],
+[id='11']{
+left: 3%;	
+}
+}
+
+@media only screen and ( max-width: 543px) {
+[id='0'],
+[id='1'],
+[id='2']{
+top: 4%;
+}
+
+[id='0']{
+left: 17%;
+}
+[id='1']{
+left: 36%;
+}
+
+[id='2']{
+left: 53%;
+}
+
+[id='8']{
+left: 17%;
+}
+[id='7']{
+left: 36%;
+}
+
+[id='6']{
+left: 53%;
+}
+
+#top_line {
+min-height: 3.9rem!important;
+margin-top: -1.5rem;
+}
 
 #wheel {
 width: 80%;
-max-width: 11.25rem;
+max-width: 15.25rem;
+margin-top: -12%;
 }
 #numbers_field {
-width: 95%;
+
 height: auto;
-min-height: 14.375rem;
+height: 19.375rem;
+position: relative;
+margin: auto;
+z-index: 3;
+}
+.item {
+text-align: center;
+margin:auto;
+max-height: 2.8rem; 
+height: 2.8rem;
+line-height: 2.8rem;
+font-size: 1.3rem;
+}
+.game_buttons {
+font-size: 1.1rem;    
+width: 11.875rem;
+}
+[id='3'],
+[id='4'],
+[id='5']{
+left: 73%;	
+}
+[id='9'],
+[id='10'],
+[id='11']{
+left: 1%;	
+}
+}
+@media only screen and ( max-width: 430px) {
+#wheel {
+width: 66%;
+top:-41%;
+max-height: 22.25rem;
+max-width: 22.875rem;
+}
+[id='0'],
+[id='1'],
+[id='2']{
+top: -2%;
+}
+
+[id='0']{
+left: 17%;
+}
+[id='1']{
+left: 36%;
+}
+
+[id='2']{
+left: 53%;
+}
+
+[id='8']{
+left: 17%;
+}
+[id='7']{
+left: 36%;
+}
+
+[id='6']{
+left: 53%;
+}
+
+#top_line {
+min-height: 2.6rem!important;
+margin-top: -1.5rem;
+}
+
+#wheel {
+width: 80%;
+max-width: 12.25rem;
+margin-top: -2%;
+}
+#numbers_field {
+
+height: auto;
+height: 16.375rem;
 position: relative;
 margin: auto;
 z-index: 3;
@@ -551,27 +693,39 @@ font-size: 1.3rem;
 font-size: 1.1rem;    
 width: 11.875rem;
 }
+[id='3'],
+[id='4'],
+[id='5']{
+left: 74%;	
 }
-@media only screen and ( max-width: 300px) {
+[id='9'],
+[id='10'],
+[id='11']{
+left: -5%;	
+}
+}
 
+@media only screen and ( max-width: 300px) {
+html{
+	padding-top: 4rem;
+}
 #numbers_field {
 width: 100%;
 }
 #top_line {
 min-height: 2.6rem!important;
-
+margin-top: 1.8rem;
 }
-
 .item {
-max-height: 10rem; 
-height: 10rem;
+max-height: 2.1rem; 
+height: 2.1rem;
 line-height: 2.1rem;
 font-size: 1rem;
 }
 [id='0'],
 [id='1'],
 [id='2']{
-top: 13%;
+top: 25%;
 }
 
 [id='6'],
@@ -591,8 +745,30 @@ top: 53%;
 [id='5']{
 top: 71%;
 }
+[id='9'],
+[id='10'],
+[id='11']{
+left: -3%;
+}
+[id='3'],
+[id='4'],
+[id='5']{
+left: 73%;
+}
 #wheel {
 width: 77%;
 max-width: 9.25rem;
+margin-top: 20%;
+}
+
+[id='3'],
+[id='4'],
+[id='5']{
+left: 73%;	
+}
+[id='9'],
+[id='10'],
+[id='11']{
+left: -5%;	
 }
 }
