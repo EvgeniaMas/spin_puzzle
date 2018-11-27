@@ -66,7 +66,6 @@ margin:auto;
 position: relative;
 z-index: 23;
 min-height: 7.75rem;
-
 }
 .game_buttons {
 font-family: "Roboto Regular";
@@ -160,8 +159,7 @@ right: 0;
 -moz-transform:    rotateY(180deg);                       
 transform:         rotateY(180deg);                        
 }
-.flip {    
-                        
+.flip {                
 -o-transform:      rotateY(180deg);                        
 -webkit-transform: rotateY(180deg); 
 -moz-transform:    rotateY(180deg);                       
@@ -221,12 +219,12 @@ left: 20%;
 [id='1']{
 position: absolute;
 top: 3.5%;
-left: 39%;	
+left: 41%;	
 }
 [id='2']{
 position: absolute;
 top: 3.5%;
-left: 60%;	
+left: 62%;	
 }
 [id='3']{
 position: absolute;
@@ -246,12 +244,12 @@ left: 80%;
 [id='6']{
 position: absolute;
 top: 79.5%;
-left: 60%;	
+left: 62%;	
 }
 [id='7']{
 position: absolute;
 top: 79.5%;
-left: 39%;	
+left: 41%;	
 }
 [id='8']{
 position: absolute;
