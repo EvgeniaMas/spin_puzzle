@@ -12,7 +12,8 @@ var config_data;// configuration colors, symbols
 var game_disabled = document.getElementById('game_disabled_layout');
 var blue =[], green =[], orange =[]; // color sequenses (just three, color indipendent)
 var unique_colors;//config unique colors values
-var data; 
+var data;
+var default_data; 
 var current_sequence = [];
 // buttons and state
 var start_button = document.getElementById('start_game');
@@ -27,10 +28,9 @@ function initial_state() {
         var game_pieces = document.createElement('div');
         game_pieces.className = 'item';
         game_pieces.setAttribute('id', i); 
-        game_pieces.setAttribute('draggable', true);        
-        elements_blocks_array.push(game_pieces); 
+        game_pieces.setAttribute('draggable', true); 
         game_pieces.innerHTML = '<div class="side back"><p class="symbol_text">3</p></div><div class="side front"><p class="number_text">1</p></div>';
-        
+        elements_blocks_array.push(game_pieces);         
      }     
       // add to the the DOM pieces
       for (var r=0; r<12; r++){
@@ -38,14 +38,13 @@ function initial_state() {
       }          
   }
  //setting games initial state
-initial_state();     
+initial_state(); 
 function normal_number_sequence(){
     var j =1;
      while (j <= sets) {
      numbers.push(j++);
    } 
 }
-
 normal_number_sequence();
 var config_colors =[];
 var config_sequence =[];
@@ -54,8 +53,7 @@ function set_symbols(){
 if(data){
  config_data = JSON.parse(data);  
 }
-
-var default_data = [
+default_data = [
       ['#91ebf8', '#'],['#91ebf8', '2'],
       ['#91ebf8', '3'],['#91ebf8', '3'],
       ['#f88701', '#'],['#f88701', '2'],
@@ -64,7 +62,7 @@ var default_data = [
       ['#90c881', '3'],['#90c881', '3']
     ]; 
 
-// TO USE CONFIG FILE DELETE "!", SO (config_data)   
+// configure numbers according default or config   
   if(config_data){ 
   for (var i=0; i<sets; i++){   
       symbols[i].style.color = config_data[i].color;
@@ -82,10 +80,7 @@ var default_data = [
       symbols[i].innerText = default_data[i][1];
      }
    }
-unique_colors = unique(config_colors);
-}
-set_symbols();
-//get unique colors in config; 
+//get unique colors from config; 
 function unique(colors) {
   var obj_color = {};
   for (var i = 0; i < colors.length; i++) {
@@ -94,33 +89,37 @@ function unique(colors) {
   }
   return Object.keys(obj_color); 
 }
+// define colors from config changeble file;
+unique_colors = unique(config_colors);
+}
+set_symbols();
+
 //get color/number sequences in current game
 function set_color_sequences(){
 if(config_data){
-  alert("Config");
    for (var i=0; i<sets; i++){
-      if(config_data[i].color == unique_colors[0]){
+    if(config_data[i].color == unique_colors[0]){
     blue.push(config_data[i].number);
     }
-      else if(config_data[i].color == unique_colors[1]){
+    else if(config_data[i].color == unique_colors[1]){
      green.push(config_data[i].number);
     }
-      else if(config_data[i].color == unique_colors[2]){
+    else if (config_data[i].color == unique_colors[2]){
     orange.push(config_data[i].number);
     }
   }
-}
-  
-else{
-   alert("No config");
+  console.log(blue);
+  console.log(orange);
+  console.log(green);
+}  
+else{  
    blue = numbers.slice(0, 4);
-   green = numbers.slice(4, 8);
-   orange = numbers.slice(8, 12); 
+   orange = numbers.slice(4, 8);
+   green = numbers.slice(8, 12); 
  }  
 }
 item_set = document.getElementsByClassName('item');
 document.addEventListener('DOMContentLoaded', set_coodinates);
-
 function set_coodinates (){
  for (i=0; i<sets; i++){
    var posX = item_set[i].offsetTop; 
@@ -143,7 +142,7 @@ function shuffle(array) {
 }
 //Mixing the numbers for new game
 function mix(){  
-shuffle(numbers);  
+   shuffle(numbers);  
    item_set = document.getElementsByClassName('item');
    current_game_elements = numbers;
    display();
@@ -153,7 +152,7 @@ function display(){
        number_text[i].innerText= numbers[i];
     } 
     set_color_sequences(); 
-    get_current_sequence();
+    get_current_sequence();    
 }
 // rotation elements
 var wheel = document.getElementById('wheel');
@@ -194,7 +193,8 @@ function append_top_line() {
     }    
 }
 function update_top_line(){
-//checking if top line is actual 
+var fir = top_line_elements[0].attr('id');
+var third = top_line_elements[2].attr('id');
  var first_top_item;
  var third_item;
  //updating HTML item collection
@@ -215,24 +215,20 @@ function update_top_line(){
  var changeble_element2= $(converted_to_arr[third]).find('.number_text');
  var color1 = $(changeble_element1).css('color'); 
  var color2 = $(changeble_element2).css('color'); 
-  // console.log(current_sequence);
 
-  var index1 = current_sequence.indexOf(first_top_item);
-  var index2 = current_sequence.indexOf(third_top_item);
-
-  // // if (index !== -1) {
-    current_sequence[index1] = third_top_item;
-    current_sequence[index2] = first_top_item;
-  //}
+ console.log(current_sequence);
+ var index1 = current_sequence.indexOf(first_top_item);
+ var index2 = current_sequence.indexOf(third_top_item); 
+ current_sequence[index1] = third_top_item;
+ current_sequence[index2] = first_top_item;
  console.log(current_sequence);
  changeble_element1.text(third_top_item);
  changeble_element2.text(first_top_item); 
  changeble_element1.css('color', color2);
  changeble_element2.css('color', color1); 
- for(var i=0; i<12; i++){
-    game_field.appendChild(converted_to_arr[i]);
-       
-  } 
+ for(var i=0; i<12; i++){   
+  game_field.appendChild(converted_to_arr[i]);       
+} 
     top_line_elements =[];    
     degrees =0;
   
@@ -329,7 +325,7 @@ function moveTouchHandler(e) {
 }
 //rotate pieces in particular direction
 function rotate_items(touch_direction){
-   // current_sequence=[];
+
 for (var i=0; i<sets; i++){
 var index= parseInt(item_set[i].getAttribute('id'));
   var new_index; 
@@ -348,12 +344,101 @@ var index= parseInt(item_set[i].getAttribute('id'));
   item_set[i].style.transition = '1.5s ease-in-out';
   item_set[i].style.left = sets_position[new_index][1]+ 'px';
   item_set[i].style.top = sets_position[new_index][0]+ 'px'; 
-  
   // reset ids of pieces   
   item_set[i].setAttribute('id', new_index);
   } 
+  console.log(current_sequence);
+   // update_current_sequence after moving items;
+   if (touch_direction =='left') {    
+    current_sequence.push(current_sequence.shift()); 
+   }
+    if (touch_direction =='right') {
+    var last_element = current_sequence.pop(); 
+    current_sequence.unshift(last_element); 
+   }
+   console.log(current_sequence);
+   check_player_solution();
+  // console.log(current_sequence);  
 }
- 
+// reset game field for rest/solve;
+function reset_game_field(){
+wheel.style.transform = 'rotate('+ 0 +'deg)';  
+top_line.style.transform = 'rotate('+ 0 +'deg)';  
+  for(var i=0; i<12; i++){
+  item_set[i].setAttribute('id', i);
+  item_set[i].style.left = sets_position[i][1]+ 'px';
+  item_set[i].style.top = sets_position[i][0]+ 'px';  
+  
+  }
+}
+//get acsending clockwise color sequences
+var blue_asc;
+var green_asc;
+var orange_asc;
+function check_player_solution(){
+var joined_sequence = current_sequence.join('');
+blue_asc = sort_asc(blue).join('');
+green_asc = sort_asc(green).join('');
+orange_asc = sort_asc(orange).join('');
+console.log(joined_sequence.indexOf(orange_asc));
+console.log(orange_asc);
+
+//checking up all three color-number counterclock 1-12 position solutions
+if (joined_sequence.indexOf(blue_asc)>-1
+&& joined_sequence.indexOf(orange_asc)>-1
+&& joined_sequence.indexOf(green_asc)>-1){  
+  reset_symbols(); 
+ //flipping items 
+  setTimeout(function() { $(document).find('.item').removeClass('flip'); }, 1000);
+   //change buttons state
+   start_button.disabled = false;
+   reset_button.disabled = true;
+   solved_button.disabled = true;
+  }
+}
+function reset_symbols(){
+  if(data){
+    for(var i=0; i<12; i++){
+       symbols[i].innerText = config_data[i].symbol;
+    }
+  }
+  else{
+    for(var i=0; i<12; i++){
+    symbols[i].style.color = default_data[i][0];   
+    }   
+  } 
+}
+//current sequence to check up player's solution 
+function get_current_sequence(){
+if(data) {
+   current_sequence = config_sequence;   
+}
+else{
+  current_sequence =[];
+  var arr = [].slice.call(number_text);
+  for (i=0; i<12; i++) {
+    current_sequence.push(arr[i].innerText);
+  }
+  // console.log(current_sequence);  
+  }
+}
+
+//sort asc /colors function 
+ function sort_asc(arr) {
+   return arr.concat().sort(function (a, b) {
+     return a - b;
+ });
+}
+
+//disable items and buttons reset
+function close_items_solved(){
+   $(document).find('.item').addClass('flip');
+   $(document).find('.item').removeClass('flip');
+     start_button.disabled = false;
+     reset_button.disabled = true;
+     solved_button.disabled = true;
+     game_disabled.style.display ='block';
+}
 //buttons handlings 
 $(start_button).on('click', function() {
    mix(); 
@@ -364,74 +449,83 @@ $(start_button).on('click', function() {
    reset_button.disabled = false;
    solved_button.disabled = false;
 });
+//solve (clockwise asc) default/config sets
 $(solved_button).on('click', function() {
-  var solved_sequence = [];
-  var j =1;
-     while (j <= sets) {
-     solved_sequence.push(j++);
-   } 
-  for (var i = 0; i < solved_sequence.length; i++){ 
-    $(number_text[i]).text(solved_sequence[i]);
-    } 
-   $(document).find('.item').addClass('flip');
-   $(document).find('.item').removeClass('flip');
-     start_button.disabled = false;
-     reset_button.disabled = true;
-     solved_button.disabled = true;
-     game_disabled.style.display ='block';
+//make ascending solve sequence 
+var solved =[];
+  for (var i=0;i<4; i++){
+    solved.push(sort_asc(blue)[i]);
+  }
+    for (var i=0;i<4; i++){
+    solved.push(sort_asc(orange)[i]);
+  }
+    for (var i=0;i<4; i++){
+    solved.push(sort_asc(green)[i]);
+  }
+  //reset game field
+  reset_game_field();
+  if(data) {
+  for(var i=0; i<12; i++){
+  number_text[i].innerText = solved[i];
+  // get unique color from config (to have it changeble)
+    for(var i=0; i<12; i++){
+  number_text[i].innerText = solved[i];
+  // set colors from config changeble file;
+  if(i<4){ 
+   number_text[i].style.color = unique_colors[0]; 
+  }
+  if(i>=4 && i<8){ 
+   number_text[i].style.color = unique_colors[2]; 
+  }
+
+  if(i>=8 && i<12){
+   number_text[i].style.color = unique_colors[1]; 
+   }
+  }
+ }
+
+}
+else {
+  for(var i=0; i<12; i++){
+  number_text[i].style.color = default_data[i][0];
+  number_text[i].innerText = solved[i];
+  }
+}
+reset_symbols();
+//append to game field 
+for (var r=0; r<12; r++){
+    game_field.appendChild(converted_to_arr[r]);
+} 
+// //flipping and reset buttons after timeout
+setTimeout(function() { 
+close_items_solved();
+},1000);
+//reset sequence for next game
+current_sequence = [];
+blue =[],
+green =[],
+orange =[];
 });
+//reset default/config sets
 $(reset_button).on('click', function() { 
-  for (var i = 0; i < current_game_elements.length; i++){ 
-      $(number_text[i]).text(current_game_elements[i]);
-    } 
-  wheel.style.transform = 'rotate('+degrees+'deg)';
-});
-//sort asc function 
- function sort_asc(arr) {
-   return arr.concat().sort(function (a, b) {
-     return a - b;
- });
-}
-//get acsending clockwise color sequences
-var blue_asc;
-var green_asc;
-var orange_asc;
-function check_player_solution(){
-var joined_sequence = current_sequence.join('');
-// console.log(current_sequence);
-blue_asc = sort_asc(blue).join('');
-green_asc = sort_asc(green).join('');
-orange_asc = sort_asc(orange).join('');
-console.log(joined_sequence);
-console.log(current_sequence.indexOf(blue_asc));
-console.log(blue_asc);
-
-//checking up all three color-number counterclock solutions
-if (joined_sequence.indexOf(blue_asc)>-1){
-// && joined_sequence.indexOf(green_asc)>-1
-// && joined_sequence.indexOf(orange_asc)>-1 
-  console.log("Solved");  
-  //flipping items  
-  setTimeout(function() { $(document).find('.item').removeClass('flip'); }, 1000);
-   //change buttons state
-   start_button.disabled = false;
-   reset_button.disabled = true;
-   solved_button.disabled = true;
-  }
-
-}
-
-function get_current_sequence(){
+reset_game_field();
 if(data) {
-   current_sequence = config_sequence;
-   console.log(current_sequence);  
+  for(var i=0; i<12; i++){
+  number_text[i].innerText = config_data[i].number;
+  number_text[i].style.color = config_data[i].color; 
+ }
 }
-else{
-  current_sequence =[];
-  var arr = [].slice.call(number_text);
-  for (i=0; i<12; i++) {
-    current_sequence.push(arr[i].innerText);
-  }
-  console.log(current_sequence);  
+else {
+  for(var i=0; i<12; i++){
+  number_text[i].style.color = default_data[i][0];
+  number_text[i].innerText = numbers[i];
   }
 }
+//intial state of game
+ for (var r=0; r<12; r++){
+  game_field.appendChild(converted_to_arr[r]);
+ }
+ current_sequence = [];
+ get_current_sequence();
+});
+

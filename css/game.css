@@ -282,6 +282,101 @@ right: 0;
 left: 0;
 z-index: 9;
 }
+
+/*styles for 1920/1080px*/
+@media only screen and ( min-width: 1919px){
+html {
+    padding-top: 0;
+    overflow-x: hidden;
+}
+body {
+    max-width: 82rem;
+    margin: auto;
+    font-family: "Code-Bold";
+    height: 85vh;   
+    max-height: 53.0625rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#game_wrapper {
+background-position: center;
+padding-top: 3rem;
+}
+[id='0']{
+position: absolute;
+top: 3.5%;
+left: 20%;	
+}
+[id='1']{
+position: absolute;
+top: 3.5%;
+left: 41%;	
+}
+[id='2']{
+position: absolute;
+top: 3.5%;
+left: 62%;	
+}
+[id='3']{
+position: absolute;
+top: 20%;
+left: 83%;	
+}
+[id='4']{
+position: absolute;
+top: 43%;
+left: 83%;	
+}
+[id='5']{
+position: absolute;
+top: 69%;
+left: 83%;	
+}
+[id='6']{
+position: absolute;
+top: 77.5%;
+left: 62%;	
+}
+[id='7']{
+position: absolute;
+top: 77.5%;
+left: 41%;	
+}
+[id='8']{
+position: absolute;
+top: 77.5%;
+left: 20%;	
+}
+[id='9']{
+position: absolute;
+top: 69%;
+left: 1%;	
+}
+[id='10']{
+position: absolute;
+top: 43%;
+left: 1%;	
+}
+[id='11']{
+position: absolute;
+top: 20%;
+left: 1%;
+}
+
+
+.buttons_block {
+    position: absolute;
+    padding: 1.5rem;
+    z-index: 8;
+    top: 0;
+    left: -10rem  
+}
+}
+
 /*responsive styles*/
 @media only screen and ( max-width: 1240px) {
 html{
@@ -831,3 +926,5 @@ left: 73%;
 left: -5%;	
 }
 }
+
+
