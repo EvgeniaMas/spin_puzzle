@@ -12,9 +12,9 @@ var config_data;// configuration colors, symbols
 var game_disabled = document.getElementById('game_disabled_layout');
 var blue =[], green =[], orange =[]; // color sequenses (just three, color indipendent)
 var unique_colors;//config unique colors values
-var data;
+var data;//config
 var default_data; 
-var current_sequence = [];
+var current_sequence = []; // number_sequnce of the curent game
 // buttons and state
 var start_button = document.getElementById('start_game');
 var reset_button = document.getElementById('reset');
@@ -93,7 +93,6 @@ function unique(colors) {
 unique_colors = unique(config_colors);
 }
 set_symbols();
-
 //get color/number sequences in current game
 function set_color_sequences(){
 if(config_data){
@@ -108,9 +107,6 @@ if(config_data){
     orange.push(config_data[i].number);
     }
   }
-  console.log(blue);
-  console.log(orange);
-  console.log(green);
 }  
 else{  
    blue = numbers.slice(0, 4);
@@ -162,6 +158,11 @@ var centers = centerPoint.split(" ");
 var degrees=0// angle of rotation
 var initial_rotation= 0;
 function rotateWheel(e) { 
+//reset animation o follow user taps
+wheel.style.transition = '';
+top_line.style.transition = '';
+
+
     var wheelEvent = e;
        if (e.targetTouches && e.targetTouches[0]) {
           e.preventDefault(); 
@@ -193,8 +194,6 @@ function append_top_line() {
     }    
 }
 function update_top_line(){
-var fir = top_line_elements[0].attr('id');
-var third = top_line_elements[2].attr('id');
  var first_top_item;
  var third_item;
  //updating HTML item collection
@@ -214,14 +213,11 @@ var third = top_line_elements[2].attr('id');
  var changeble_element1 = $(converted_to_arr[first]).find('.number_text');
  var changeble_element2= $(converted_to_arr[third]).find('.number_text');
  var color1 = $(changeble_element1).css('color'); 
- var color2 = $(changeble_element2).css('color'); 
-
- console.log(current_sequence);
+ var color2 = $(changeble_element2).css('color');
  var index1 = current_sequence.indexOf(first_top_item);
  var index2 = current_sequence.indexOf(third_top_item); 
  current_sequence[index1] = third_top_item;
- current_sequence[index2] = first_top_item;
- console.log(current_sequence);
+ current_sequence[index2] = first_top_item; 
  changeble_element1.text(third_top_item);
  changeble_element2.text(first_top_item); 
  changeble_element1.css('color', color2);
@@ -235,19 +231,26 @@ var third = top_line_elements[2].attr('id');
     check_player_solution();
 }
 function checkWheelposition() {
+wheel.style.transition = '0.8s ease-in-out';
+top_line.style.transition = '0.8s ease-in-out';
 //return top_line to default position checking the state of wheel
 if (initial_rotation==0){   
    wheel.style.transform = 'rotate('+ 180 +'deg)'; 
-   update_top_line();
-    
+   top_line.style.transform = 'rotate('+ 180 +'deg)'; 
+  setTimeout(function() { update_top_line();   }, 800);
    initial_rotation = 180;
+  
  }
  else if (initial_rotation==180) {
   wheel.style.transform = 'rotate('+ 0 +'deg)'; 
+  top_line.style.transform = 'rotate('+ 0 +'deg)';   
   initial_rotation = 0;
-  update_top_line();
-    
+  setTimeout(function() { update_top_line();   }, 1000);
+
  }
+ //resert transition properties
+
+
 }
 wheel.addEventListener('touchmove', rotateWheel);
 wheel.addEventListener('touchstart', append_top_line, rotateWheel);
@@ -341,13 +344,13 @@ var index= parseInt(item_set[i].getAttribute('id'));
     if( index!=11 && touch_direction =='right'){
     new_index = index+1;
   }  
-  item_set[i].style.transition = '1.5s ease-in-out';
-  item_set[i].style.left = sets_position[new_index][1]+ 'px';
+  item_set[i].style.transition = '1.7s cubic-bezier(0, 0, 0.58, 1)';
   item_set[i].style.top = sets_position[new_index][0]+ 'px'; 
+  item_set[i].style.left = sets_position[new_index][1]+ 'px';
+ 
   // reset ids of pieces   
   item_set[i].setAttribute('id', new_index);
-  } 
-  console.log(current_sequence);
+  }  
    // update_current_sequence after moving items;
    if (touch_direction =='left') {    
     current_sequence.push(current_sequence.shift()); 
@@ -355,10 +358,8 @@ var index= parseInt(item_set[i].getAttribute('id'));
     if (touch_direction =='right') {
     var last_element = current_sequence.pop(); 
     current_sequence.unshift(last_element); 
-   }
-   console.log(current_sequence);
-   check_player_solution();
-  // console.log(current_sequence);  
+   }   
+   check_player_solution();  
 }
 // reset game field for rest/solve;
 function reset_game_field(){
@@ -380,9 +381,6 @@ var joined_sequence = current_sequence.join('');
 blue_asc = sort_asc(blue).join('');
 green_asc = sort_asc(green).join('');
 orange_asc = sort_asc(orange).join('');
-console.log(joined_sequence.indexOf(orange_asc));
-console.log(orange_asc);
-
 //checking up all three color-number counterclock 1-12 position solutions
 if (joined_sequence.indexOf(blue_asc)>-1
 && joined_sequence.indexOf(orange_asc)>-1
@@ -396,10 +394,21 @@ if (joined_sequence.indexOf(blue_asc)>-1
    solved_button.disabled = true;
   }
 }
-function reset_symbols(){
-  if(data){
-    for(var i=0; i<12; i++){
-       symbols[i].innerText = config_data[i].symbol;
+function reset_symbols(solved){
+symbols_solved = [];
+if(data){
+//get ordered symbols config sequence	
+for (var i=0;i<12; i++){
+  for (var key in config_data){  
+    if(config_data[key].number == solved[i]){
+     symbols_solved.push(config_data[key].symbol);
+     break;
+    }
+ }
+}
+// append to DOM
+  for(var i=0; i<12; i++){  	
+     symbols[i].innerText = symbols_solved[i];      
     }
   }
   else{
@@ -418,18 +427,15 @@ else{
   var arr = [].slice.call(number_text);
   for (i=0; i<12; i++) {
     current_sequence.push(arr[i].innerText);
-  }
-  // console.log(current_sequence);  
+   } 
   }
 }
-
 //sort asc /colors function 
  function sort_asc(arr) {
    return arr.concat().sort(function (a, b) {
      return a - b;
  });
 }
-
 //disable items and buttons reset
 function close_items_solved(){
    $(document).find('.item').addClass('flip');
@@ -449,6 +455,7 @@ $(start_button).on('click', function() {
    reset_button.disabled = false;
    solved_button.disabled = false;
 });
+
 //solve (clockwise asc) default/config sets
 $(solved_button).on('click', function() {
 //make ascending solve sequence 
@@ -473,17 +480,19 @@ var solved =[];
   // set colors from config changeble file;
   if(i<4){ 
    number_text[i].style.color = unique_colors[0]; 
+   symbols[i].style.color = unique_colors[0]; 
   }
   if(i>=4 && i<8){ 
    number_text[i].style.color = unique_colors[2]; 
+   symbols[i].style.color = unique_colors[2];
   }
 
   if(i>=8 && i<12){
    number_text[i].style.color = unique_colors[1]; 
+   symbols[i].style.color = unique_colors[1];
    }
   }
  }
-
 }
 else {
   for(var i=0; i<12; i++){
@@ -491,7 +500,8 @@ else {
   number_text[i].innerText = solved[i];
   }
 }
-reset_symbols();
+
+reset_symbols(solved);
 //append to game field 
 for (var r=0; r<12; r++){
     game_field.appendChild(converted_to_arr[r]);
@@ -505,6 +515,7 @@ current_sequence = [];
 blue =[],
 green =[],
 orange =[];
+symbols_solved = [];
 });
 //reset default/config sets
 $(reset_button).on('click', function() { 
