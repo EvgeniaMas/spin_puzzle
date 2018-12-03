@@ -248,9 +248,6 @@ if (initial_rotation==0){
   setTimeout(function() { update_top_line();   }, 1000);
 
  }
- //resert transition properties
-
-
 }
 wheel.addEventListener('touchmove', rotateWheel);
 wheel.addEventListener('touchstart', append_top_line, rotateWheel);
@@ -344,7 +341,8 @@ var index= parseInt(item_set[i].getAttribute('id'));
     if( index!=11 && touch_direction =='right'){
     new_index = index+1;
   }  
-  item_set[i].style.transition = '1.7s cubic-bezier(0, 0, 0.58, 1)';
+  item_set[i].style.transition = '1.2s linear';
+  // item_set[i].style.transition = '1.5s ease-in-out';
   item_set[i].style.top = sets_position[new_index][0]+ 'px'; 
   item_set[i].style.left = sets_position[new_index][1]+ 'px';
  
@@ -363,6 +361,9 @@ var index= parseInt(item_set[i].getAttribute('id'));
 }
 // reset game field for rest/solve;
 function reset_game_field(){
+initial_rotation = 0;  
+wheel.style.transition = '';
+top_line.style.transition = '';  
 wheel.style.transform = 'rotate('+ 0 +'deg)';  
 top_line.style.transform = 'rotate('+ 0 +'deg)';  
   for(var i=0; i<12; i++){
@@ -385,10 +386,24 @@ orange_asc = sort_asc(orange).join('');
 if (joined_sequence.indexOf(blue_asc)>-1
 && joined_sequence.indexOf(orange_asc)>-1
 && joined_sequence.indexOf(green_asc)>-1){  
-  reset_symbols(); 
  //flipping items 
-  setTimeout(function() { $(document).find('.item').removeClass('flip'); }, 1000);
+  setTimeout(function() { $(document).find('.item').removeClass('flip');
+   game_disabled.style.display ='block';
+   initial_rotation = 0;  
+   wheel.style.transition = '';
+   top_line.style.transition = '';
+   wheel.style.transform = 'rotate('+ 0 +'deg)';  
+   top_line.style.transform = 'rotate('+ 0 +'deg)'; 
+   
+   }, 1000);
    //change buttons state
+   current_sequence = [];
+   config_sequence = [];
+   blue =[],
+   green =[],
+   orange =[];
+   symbols_solved = [];
+   solved =[];
    start_button.disabled = false;
    reset_button.disabled = true;
    solved_button.disabled = true;
@@ -446,14 +461,22 @@ function close_items_solved(){
      game_disabled.style.display ='block';
 }
 //buttons handlings 
-$(start_button).on('click', function() {
-   mix(); 
+count=0;
+$(start_button).on('click', function() { 
+   if(count>0){
+    reset_game_field();
+    for (var r=0; r<12; r++){
+    game_field.appendChild(converted_to_arr[r]);
+}
+   }
+   mix();
    game_disabled.style.display ='none';
    $(document).find('.item').addClass('flip');
    set_symbols();
    start_button.disabled = true;
    reset_button.disabled = false;
    solved_button.disabled = false;
+   count++;
 });
 
 //solve (clockwise asc) default/config sets
@@ -500,7 +523,6 @@ else {
   number_text[i].innerText = solved[i];
   }
 }
-
 reset_symbols(solved);
 //append to game field 
 for (var r=0; r<12; r++){
@@ -516,6 +538,8 @@ blue =[],
 green =[],
 orange =[];
 symbols_solved = [];
+solved =[];
+ game_disabled.style.display ='block';
 });
 //reset default/config sets
 $(reset_button).on('click', function() { 
